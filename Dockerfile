@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM balenalib/raspberrypi3
 
 LABEL created_by=jbali.khaled@sofrecom.com
 LABEL binaries=https://andyfelong.com/2017/08/mongodb-3-0-14-for-raspbian-stretch
@@ -36,4 +36,4 @@ EXPOSE 28017
 
 #ENTRYPOINT ["/sbin/tini", "--"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["mongod"] 
+CMD ["mongod"]
