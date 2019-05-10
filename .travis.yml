@@ -1,0 +1,11 @@
+sudo: required
+services:
+- docker
+language: bash
+script:
+# prepare qemu
+- docker run --rm --privileged multiarch/qemu-user-static:register --reset
+# build image
+- docker build -t khaled/rpi3-mongodb3 .
+# test image
+- docker run -d  --name rpi3-mongodb3  --restart unless-stopped  -v /data/db:/data/db  -v /data/configdb:/data/configdb  -p 27017:27017  -p 28017:28017  khaled/rpi3-mongodb3:latest  mongod --auth
